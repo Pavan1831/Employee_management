@@ -6,7 +6,7 @@ app.secret_key = 'pavan'
 
 # Configure MySQL connection
 db = mysql.connector.connect(
-    host="127.0.0.1",
+    host="host.docker.internal",
     user="root",
     password="pavan",
     database="employee_management"
