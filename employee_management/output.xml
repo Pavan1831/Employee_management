@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1 (Python 3.11.2 on win32)" generated="20230724 11:09:29.384" rpa="false" schemaversion="4">
+<suite id="s1" name="Employee Mngmnt Login" source="C:\Users\PavanKalyanN-INT-206\PycharmProjects\pythonProject\employee_management\employee_mngmnt_login.robot">
+<test id="s1-t1" name="Login and Logout Test" line="16">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${base_url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230724 11:09:29.574" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<msg timestamp="20230724 11:09:29.580" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230724 11:09:29.573" endtime="20230724 11:09:30.904"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>DummyAPI</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230724 11:09:30.905" level="INFO">Creating Session using : alias=DummyAPI, url=http://127.0.0.1:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230724 11:09:30.904" endtime="20230724 11:09:30.905"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>DummyAPI</arg>
+<arg>/login</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230724 11:09:30.912" level="INFO">GET Request : url=http://127.0.0.1:5000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230724 11:09:30.912" level="INFO">GET Response : url=http://127.0.0.1:5000/login 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.11.2', 'Date': 'Mon, 24 Jul 2023 05:39:30 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '1269', 'Connection': 'close'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+    &lt;style&gt;
+        /* Add the same CSS styles as in the previous example */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    
+    &lt;form method="POST" action=""&gt;
+        &lt;input type="text" name="username" placeholder="Username"&gt;&lt;br&gt;
+        &lt;input type="password" name="password" placeholder="Password"&gt;&lt;br&gt;
+        &lt;input type="submit" value="Login"&gt;
+    &lt;/form&gt;
+    &lt;p&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<msg timestamp="20230724 11:09:30.913" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230724 11:09:30.905" endtime="20230724 11:09:30.913"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>username</arg>
+<arg>${VALID_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:30.914" level="INFO">Typing text 'pavan' into text field 'username'.</msg>
+<status status="PASS" starttime="20230724 11:09:30.913" endtime="20230724 11:09:31.003"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>password</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:31.004" level="INFO">Typing text 'pavan' into text field 'password'.</msg>
+<status status="PASS" starttime="20230724 11:09:31.003" endtime="20230724 11:09:31.070"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>Login</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:31.070" level="INFO">Clicking button 'Login'.</msg>
+<status status="PASS" starttime="20230724 11:09:31.070" endtime="20230724 11:09:31.167"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//h1[text()='Employee Management']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230724 11:09:31.167" endtime="20230724 11:09:31.204"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>Logout</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:31.205" level="INFO">Clicking link 'Logout'.</msg>
+<status status="PASS" starttime="20230724 11:09:31.204" endtime="20230724 11:09:31.283"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>http://127.0.0.1:5000/login</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20230724 11:09:31.287" level="INFO">Current location is 'http://127.0.0.1:5000/login'.</msg>
+<status status="PASS" starttime="20230724 11:09:31.283" endtime="20230724 11:09:31.287"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Login and Logout Successfull</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:31.288" endtime="20230724 11:09:31.288"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>--------------------------------------</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:31.288" endtime="20230724 11:09:31.288"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230724 11:09:31.288" endtime="20230724 11:09:33.424"/>
+</kw>
+<doc>Verify successful login and logout</doc>
+<status status="PASS" starttime="20230724 11:09:29.573" endtime="20230724 11:09:33.425"/>
+</test>
+<test id="s1-t2" name="Login Page Elements Test" line="29">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${base_url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230724 11:09:33.428" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<msg timestamp="20230724 11:09:33.441" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230724 11:09:33.427" endtime="20230724 11:09:34.795"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>DummyAPI</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230724 11:09:34.796" level="INFO">Creating Session using : alias=DummyAPI, url=http://127.0.0.1:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230724 11:09:34.796" endtime="20230724 11:09:34.796"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>DummyAPI</arg>
+<arg>/login</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230724 11:09:34.801" level="INFO">GET Request : url=http://127.0.0.1:5000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230724 11:09:34.801" level="INFO">GET Response : url=http://127.0.0.1:5000/login 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.11.2', 'Date': 'Mon, 24 Jul 2023 05:39:34 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '1269', 'Connection': 'close'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+    &lt;style&gt;
+        /* Add the same CSS styles as in the previous example */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    
+    &lt;form method="POST" action=""&gt;
+        &lt;input type="text" name="username" placeholder="Username"&gt;&lt;br&gt;
+        &lt;input type="password" name="password" placeholder="Password"&gt;&lt;br&gt;
+        &lt;input type="submit" value="Login"&gt;
+    &lt;/form&gt;
+    &lt;p&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<msg timestamp="20230724 11:09:34.801" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230724 11:09:34.797" endtime="20230724 11:09:34.801"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>//input[@name='username']</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230724 11:09:34.818" level="INFO">Current page contains element '//input[@name='username']'.</msg>
+<status status="PASS" starttime="20230724 11:09:34.802" endtime="20230724 11:09:34.818"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>//input[@name='password']</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230724 11:09:34.830" level="INFO">Current page contains element '//input[@name='password']'.</msg>
+<status status="PASS" starttime="20230724 11:09:34.818" endtime="20230724 11:09:34.830"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>//input[@type='submit']</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230724 11:09:34.841" level="INFO">Current page contains element '//input[@type='submit']'.</msg>
+<status status="PASS" starttime="20230724 11:09:34.831" endtime="20230724 11:09:34.841"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>//a[text()='Sign up']</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230724 11:09:34.849" level="INFO">Current page contains element '//a[text()='Sign up']'.</msg>
+<status status="PASS" starttime="20230724 11:09:34.841" endtime="20230724 11:09:34.850"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Login page elements verified</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:34.850" endtime="20230724 11:09:34.850"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>--------------------------------------</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:34.850" endtime="20230724 11:09:34.851"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230724 11:09:34.851" endtime="20230724 11:09:36.954"/>
+</kw>
+<doc>Verify the presence of login page elements</doc>
+<status status="PASS" starttime="20230724 11:09:33.426" endtime="20230724 11:09:36.955"/>
+</test>
+<test id="s1-t3" name="Valid Login Test" line="40">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${base_url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230724 11:09:36.962" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<msg timestamp="20230724 11:09:36.975" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230724 11:09:36.960" endtime="20230724 11:09:38.299"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>DummyAPI</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230724 11:09:38.300" level="INFO">Creating Session using : alias=DummyAPI, url=http://127.0.0.1:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230724 11:09:38.300" endtime="20230724 11:09:38.301"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>DummyAPI</arg>
+<arg>/login</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230724 11:09:38.308" level="INFO">GET Request : url=http://127.0.0.1:5000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230724 11:09:38.308" level="INFO">GET Response : url=http://127.0.0.1:5000/login 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.11.2', 'Date': 'Mon, 24 Jul 2023 05:39:38 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '1269', 'Connection': 'close'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+    &lt;style&gt;
+        /* Add the same CSS styles as in the previous example */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    
+    &lt;form method="POST" action=""&gt;
+        &lt;input type="text" name="username" placeholder="Username"&gt;&lt;br&gt;
+        &lt;input type="password" name="password" placeholder="Password"&gt;&lt;br&gt;
+        &lt;input type="submit" value="Login"&gt;
+    &lt;/form&gt;
+    &lt;p&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<msg timestamp="20230724 11:09:38.308" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230724 11:09:38.302" endtime="20230724 11:09:38.308"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<msg timestamp="20230724 11:09:38.310" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<status status="PASS" starttime="20230724 11:09:38.309" endtime="20230724 11:09:38.310"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//input[@name='username']</arg>
+<arg>${VALID_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:38.311" level="INFO">Typing text 'pavan' into text field '//input[@name='username']'.</msg>
+<status status="PASS" starttime="20230724 11:09:38.310" endtime="20230724 11:09:38.401"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//input[@name='password']</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:38.402" level="INFO">Typing text 'pavan' into text field '//input[@name='password']'.</msg>
+<status status="PASS" starttime="20230724 11:09:38.402" endtime="20230724 11:09:38.472"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//input[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:38.473" level="INFO">Clicking button '//input[@type='submit']'.</msg>
+<status status="PASS" starttime="20230724 11:09:38.473" endtime="20230724 11:09:38.555"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//h1[text()='Employee Management']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230724 11:09:38.556" endtime="20230724 11:09:38.587"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Login Successfull</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:38.588" endtime="20230724 11:09:38.588"/>
+</kw>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<arg>Invalid username or password. Please try again.</arg>
+<doc>Verifies the current page does not contain ``text``.</doc>
+<msg timestamp="20230724 11:09:38.608" level="INFO">Current page does not contain text 'Invalid username or password. Please try again.'.</msg>
+<status status="PASS" starttime="20230724 11:09:38.588" endtime="20230724 11:09:38.608"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>--------------------------------------</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:38.608" endtime="20230724 11:09:38.609"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230724 11:09:38.609" endtime="20230724 11:09:40.725"/>
+</kw>
+<doc>Verify successful login with valid credentials</doc>
+<status status="PASS" starttime="20230724 11:09:36.958" endtime="20230724 11:09:40.726"/>
+</test>
+<test id="s1-t4" name="Invalid Credentials Test" line="53">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${base_url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230724 11:09:40.731" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<msg timestamp="20230724 11:09:40.750" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230724 11:09:40.730" endtime="20230724 11:09:42.057"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>DummyAPI</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230724 11:09:42.058" level="INFO">Creating Session using : alias=DummyAPI, url=http://127.0.0.1:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230724 11:09:42.058" endtime="20230724 11:09:42.058"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>DummyAPI</arg>
+<arg>/login</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230724 11:09:42.064" level="INFO">GET Request : url=http://127.0.0.1:5000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230724 11:09:42.065" level="INFO">GET Response : url=http://127.0.0.1:5000/login 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.11.2', 'Date': 'Mon, 24 Jul 2023 05:39:42 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '1269', 'Connection': 'close'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+    &lt;style&gt;
+        /* Add the same CSS styles as in the previous example */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    
+    &lt;form method="POST" action=""&gt;
+        &lt;input type="text" name="username" placeholder="Username"&gt;&lt;br&gt;
+        &lt;input type="password" name="password" placeholder="Password"&gt;&lt;br&gt;
+        &lt;input type="submit" value="Login"&gt;
+    &lt;/form&gt;
+    &lt;p&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<msg timestamp="20230724 11:09:42.066" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230724 11:09:42.059" endtime="20230724 11:09:42.066"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//input[@name='username']</arg>
+<arg>${INVALID_USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:42.067" level="INFO">Typing text 'invaliduser' into text field '//input[@name='username']'.</msg>
+<status status="PASS" starttime="20230724 11:09:42.066" endtime="20230724 11:09:42.165"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>//input[@name='password']</arg>
+<arg>${INVALID_PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:42.166" level="INFO">Typing text 'invalidpassword' into text field '//input[@name='password']'.</msg>
+<status status="PASS" starttime="20230724 11:09:42.165" endtime="20230724 11:09:42.237"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//input[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:42.238" level="INFO">Clicking button '//input[@type='submit']'.</msg>
+<status status="PASS" starttime="20230724 11:09:42.238" endtime="20230724 11:09:42.293"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//p[text()='Invalid username or password. Please try again.']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230724 11:09:42.293" endtime="20230724 11:09:42.318"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Invalid credentials</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:42.319" endtime="20230724 11:09:42.319"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>----------------------------------------</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:42.319" endtime="20230724 11:09:42.319"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230724 11:09:42.320" endtime="20230724 11:09:44.456"/>
+</kw>
+<doc>Verify error message for invalid login credentials</doc>
+<status status="PASS" starttime="20230724 11:09:40.729" endtime="20230724 11:09:44.457"/>
+</test>
+<test id="s1-t5" name="Empty Fields Test" line="64">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${base_url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230724 11:09:44.462" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<msg timestamp="20230724 11:09:44.477" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230724 11:09:44.461" endtime="20230724 11:09:45.789"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>DummyAPI</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230724 11:09:45.789" level="INFO">Creating Session using : alias=DummyAPI, url=http://127.0.0.1:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230724 11:09:45.789" endtime="20230724 11:09:45.789"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>DummyAPI</arg>
+<arg>/login</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230724 11:09:45.795" level="INFO">GET Request : url=http://127.0.0.1:5000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230724 11:09:45.795" level="INFO">GET Response : url=http://127.0.0.1:5000/login 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.11.2', 'Date': 'Mon, 24 Jul 2023 05:39:45 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '1269', 'Connection': 'close'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+    &lt;style&gt;
+        /* Add the same CSS styles as in the previous example */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    
+    &lt;form method="POST" action=""&gt;
+        &lt;input type="text" name="username" placeholder="Username"&gt;&lt;br&gt;
+        &lt;input type="password" name="password" placeholder="Password"&gt;&lt;br&gt;
+        &lt;input type="submit" value="Login"&gt;
+    &lt;/form&gt;
+    &lt;p&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<msg timestamp="20230724 11:09:45.795" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230724 11:09:45.790" endtime="20230724 11:09:45.795"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>//input[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:45.797" level="INFO">Clicking button '//input[@type='submit']'.</msg>
+<status status="PASS" starttime="20230724 11:09:45.796" endtime="20230724 11:09:45.886"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>//p[text()='Invalid username or password. Please try again.']</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20230724 11:09:45.886" endtime="20230724 11:09:45.911"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Enter credentials</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:45.912" endtime="20230724 11:09:45.912"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>----------------------------------------</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:45.912" endtime="20230724 11:09:45.913"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230724 11:09:45.913" endtime="20230724 11:09:48.036"/>
+</kw>
+<doc>Verify error message when attempting to login with empty fields</doc>
+<status status="PASS" starttime="20230724 11:09:44.459" endtime="20230724 11:09:48.036"/>
+</test>
+<test id="s1-t6" name="Sign Up Link Test" line="73">
+<kw name="Open Browser" library="SeleniumLibrary" type="SETUP">
+<arg>${base_url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230724 11:09:48.040" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000/'.</msg>
+<msg timestamp="20230724 11:09:48.051" level="INFO">Applicable driver not found; attempting to install with Selenium Manager (Beta)</msg>
+<status status="PASS" starttime="20230724 11:09:48.039" endtime="20230724 11:09:49.371"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>DummyAPI</arg>
+<arg>${base_url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230724 11:09:49.372" level="INFO">Creating Session using : alias=DummyAPI, url=http://127.0.0.1:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20230724 11:09:49.372" endtime="20230724 11:09:49.372"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>DummyAPI</arg>
+<arg>/login</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230724 11:09:49.382" level="INFO">GET Request : url=http://127.0.0.1:5000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230724 11:09:49.382" level="INFO">GET Response : url=http://127.0.0.1:5000/login 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.3.6 Python/3.11.2', 'Date': 'Mon, 24 Jul 2023 05:39:49 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '1269', 'Connection': 'close'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Login&lt;/title&gt;
+    &lt;style&gt;
+        /* Add the same CSS styles as in the previous example */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Login&lt;/h1&gt;
+    
+    &lt;form method="POST" action=""&gt;
+        &lt;input type="text" name="username" placeholder="Username"&gt;&lt;br&gt;
+        &lt;input type="password" name="password" placeholder="Password"&gt;&lt;br&gt;
+        &lt;input type="submit" value="Login"&gt;
+    &lt;/form&gt;
+    &lt;p&gt;Don't have an account? &lt;a href="/signup"&gt;Sign up&lt;/a&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<msg timestamp="20230724 11:09:49.382" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230724 11:09:49.373" endtime="20230724 11:09:49.382"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>//a[text()='Sign up']</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20230724 11:09:49.383" level="INFO">Clicking link '//a[text()='Sign up']'.</msg>
+<status status="PASS" starttime="20230724 11:09:49.382" endtime="20230724 11:09:49.462"/>
+</kw>
+<kw name="Location Should Be" library="SeleniumLibrary">
+<arg>http://127.0.0.1:5000/signup</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<msg timestamp="20230724 11:09:49.466" level="INFO">Current location is 'http://127.0.0.1:5000/signup'.</msg>
+<status status="PASS" starttime="20230724 11:09:49.462" endtime="20230724 11:09:49.466"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Redirection to Signup page</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:49.466" endtime="20230724 11:09:49.466"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>--------------------------------------</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230724 11:09:49.467" endtime="20230724 11:09:49.467"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230724 11:09:49.467" endtime="20230724 11:09:51.568"/>
+</kw>
+<doc>Verify redirection to signup page when clicking the sign-up link</doc>
+<status status="PASS" starttime="20230724 11:09:48.038" endtime="20230724 11:09:51.569"/>
+</test>
+<status status="PASS" starttime="20230724 11:09:29.386" endtime="20230724 11:09:51.570"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="6" fail="0" skip="0" id="s1" name="Employee Mngmnt Login">Employee Mngmnt Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
